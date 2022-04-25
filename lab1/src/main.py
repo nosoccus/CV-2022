@@ -2,6 +2,8 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
+from noise import add_noise
+
 
 def median_filter(img, k):
     w, h, c = img.shape
@@ -26,12 +28,15 @@ if __name__ == "__main__":
     # Image reading
     image = cv2.imread('img/image.png')
 
-    # Median filter
-    filter_size = 2
-    filtered_img = median_filter(image, filter_size)
-
-    # Save image
-    cv2.imwrite(f'result/result{filter_size}.png', filtered_img)
-    # Image display
-    plt.imshow(cv2.cvtColor(filtered_img, cv2.COLOR_BGR2RGB))
+    noise_img = add_noise(image)
+    cv2.imwrite('img/noised.png', noise_img)
+    plt.imshow(cv2.cvtColor(noise_img, cv2.COLOR_BGR2RGB))
     plt.show()
+
+    filter_sizes = [1, 2, 5, 10, 20, 50]
+    for filter_size in filter_sizes:
+        filtered_img = median_filter(noise_img, filter_size)
+
+        cv2.imwrite(f'results/result{filter_size}.png', filtered_img)
+        # plt.imshow(cv2.cvtColor(filtered_img, cv2.COLOR_BGR2RGB))
+        # plt.show()
