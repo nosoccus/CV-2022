@@ -9,6 +9,9 @@
 - Original image:
 ![](src/img/image.png)
 
+- Noised image:
+![](src/img/noised.png)
+
 - Filter size 1:
 ![](src/results/result1.png)
 
@@ -26,6 +29,3 @@
 
 - Filter size 50:
 ![](src/results/result50.png)
-
-- Filter size 100:
-![](src/results/result100.png)
